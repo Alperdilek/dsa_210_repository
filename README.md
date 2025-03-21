@@ -24,6 +24,11 @@ The dataset for this project will consist of pre-existing research on caloric ex
 - **Bench Press Caloric Expenditure (kcal)**: The estimated calories burned during Bench Press based on weight and repetitions,measured using Apple Watch.
 - **Lat Pulldown Caloric Expenditure (kcal)**: The estimated calories burned during Lat Pulldown based on weight and repetitions,measured using Apple Watch.
 - **Smith Machine Overhead Press Caloric Expenditure (kcal)**: The estimated calories burned during Smith Machine Overhead Press based on weight and repetitions,measured using Apple Watch.
+- **Weight Load (kg/lbs)**: The amount of weight lifted during each exercise.
+- **Repetition Count**: The number of repetitions performed per set.
+- **Total Volume (Weight × Reps)**: The total workload for each exercise session.
+- **Heart Rate (bpm)**: Heart rate data collected during each exercise session,measured by apple watch.
+- **Total Caloric Expenditure (kcal)**: The overall calories burned during the training session.
 
 ## Tools and Technologies
 
