@@ -167,8 +167,9 @@ The regression analysis conducted on the 30-day training dataset aimed to determ
 
 ### 📐 Decision:
 
-- **Null Hypothesis (H₀):** Training intensity has no significant effect on caloric expenditure.
-- **Alternative Hypothesis (Hₐ):** Higher intensity training significantly increases caloric expenditure.
+- **H₀ (Null Hypothesis)**: Training intensity (weight and rep count) has no significant effect on caloric expenditure.
+- **Hₐ (Alternative Hypothesis)**: Higher intensity training (either heavier loads or more repetitions) significantly increases caloric expenditure.
+
 
 Since the p-value is below 0.05, we **reject H₀** and accept **Hₐ**.
 
