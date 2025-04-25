@@ -51,3 +51,134 @@ To evaluate the impact of training intensity on caloric burn, I will test the fo
 ## Conclusion
 
 This project goes beyond simply tracking workout performance—it’s about applying data science to fitness in a way that allows for smarter, more effective training decisions. By leveraging data-driven insights, I hope to build a comprehensive understanding of how heavy lifting affects caloric burn and develop a more optimized approach to training efficiency and long-term strength progression.
+
+## 📡 Data Collection and Processing
+
+In this project, all data were personally collected through a structured training and monitoring routine over a 30-day period. The aim was to measure how different training intensities affected caloric expenditure during resistance training.
+
+### 📲 Data Acquisition via Apple Watch
+
+Each workout session was tracked using an **Apple Watch Series 7** paired with the **Apple Fitness** and **Health** apps. The exercises included in the data collection were:
+
+- **Bench Press**
+- **Lat Pulldown**
+- **Smith Machine Overhead Press**
+
+During each session, I manually selected the exercise type and logged the exact **weight and repetition count** for each set. The Apple Watch simultaneously recorded:
+
+- **Caloric expenditure (kcal)**
+- **Heart rate (bpm)**
+- **Duration of exercise**
+- **Time and date of session**
+
+The watch uses built-in optical sensors, motion data, and heart rate variability to estimate calorie burn specific to strength-based activities.
+
+### 🔄 Data Export and Structuring
+
+At the end of each day, I exported my workout and health data from the **Apple Health app** using the built-in export feature. This generated a structured `.xml` dataset containing detailed records for each exercise event.
+
+The data processing involved:
+
+1. Parsing the XML file using Python (`xml.etree.ElementTree` and `pandas`)
+2. Filtering for the three target exercises by matching timestamps with my workout logbook
+3. Extracting relevant fields:
+   - **Date**
+   - **Exercise name**
+   - **Weight load (kg)**
+   - **Repetition count**
+   - **Average heart rate**
+   - **Calories burned**
+
+### 🧹 Data Processing
+
+The extracted data were cleaned and organized into a structured `.csv` format. Each row represents a single set performed in a session. No simulated values were used — **all weights, repetitions, and physiological data were observed and recorded in real time**.
+
+Additionally:
+
+- Days without training were tagged as **off days**
+- Caloric expenditure per movement was recorded directly from Apple Watch’s session breakdowns
+- Heart rate was averaged across the duration of each movement
+
+The final dataset was fully anonymized, preprocessed for analysis, and visualized using Python.
+
+## 📊 Findings from Data Visualization (Detailed Interpretation)
+
+Based on 30 consecutive training sessions and over 250 recorded sets, I analyzed how increasing resistance load impacts energy expenditure in three compound movements: **Bench Press**, **Lat Pulldown**, and **Smith Machine Overhead Press**. The insights drawn from data visualizations, particularly **box plots** and a **scatterplot**, offer compelling evidence for the role of intensity in caloric burn.
+
+---
+
+### 🔹 Box Plots of Caloric Expenditure by Weight Load
+
+Box plots were created for each exercise type across varying weight loads. These visualizations highlighted both the **central tendency** (median) and **variability** (interquartile range) of calorie expenditure per set.
+
+#### 🏋️‍♂️ Bench Press:
+
+- **At 120 kg**, most sets burned between **8–9 kcal**, with minimal variance.
+- As the load increased to **150 kg**, the **median rose to ~13.5 kcal**, and the upper quartile approached **15 kcal**, showing a broader range of metabolic demand.
+- This trend implies that heavier bench pressing not only requires more effort but also results in a wider physiological response — possibly due to increased neuromuscular recruitment and higher intra-set heart rate.
+
+#### 🔻 Lat Pulldown:
+
+- Started at **~6 kcal/set** at 70 kg.
+- Increased to **~11 kcal/set** at 95 kg.
+- Despite being a pulling movement with generally lower systemic demand than the Bench Press, the lat pulldown still showed a clear, positive correlation between load and energy expenditure.
+
+#### 🔼 Smith Machine Overhead Press:
+
+- Caloric output ranged from **6–7 kcal/set** at 60 kg to **10–11 kcal/set** at 100 kg.
+- The overhead press showed slightly more **within-group variation** at heavier weights, potentially due to stability demands or slight inconsistencies in pressing tempo.
+
+Across all three movements, the box plots confirmed a **consistent upward trend** in median caloric burn as weight increased, with heavier loads also showing greater **interquartile spread** — possibly reflecting individual set-to-set variation, fatigue effects, or heart rate lag.
+
+---
+
+### 🔹 Scatterplot of Total Volume vs. Caloric Expenditure
+
+A scatterplot was generated to compare **total training volume** (`Weight Load × Reps`) and caloric output. The pattern revealed a **positive linear correlation** between the two variables.
+
+#### Key Observations:
+
+- Sessions with **higher volume** consistently clustered in the **upper-right** of the plot, confirming that total workload is a strong predictor of energy cost.
+- While some scatter exists (especially in mid-volume ranges), this is likely attributed to:
+  - Heart rate lag between sets
+  - Inconsistent rest periods
+  - Intra-individual physiological variation
+- The slope of the trend line suggested an approximate **increase of 0.02–0.05 kcal per unit of volume**.
+
+---
+
+### 🔍 Summary:
+
+These visual trends indicate that **training intensity and volume both contribute meaningfully to caloric expenditure**. Heavier loads not only produce a greater average burn but also a wider response range, which may be valuable for tailoring metabolic or hypertrophy-focused training programs. Moreover, **total volume** emerged as a robust metric to estimate workout energy cost, which aligns with existing exercise physiology literature.
+
+## ✅ Hypothesis Test Evaluation & Interpretation
+
+The regression analysis conducted on the 30-day training dataset aimed to determine whether training intensity (measured as `Weight × Reps`, i.e., Total Volume) has a statistically significant impact on caloric expenditure.
+
+---
+
+### 🔎 Summary of Findings:
+
+- The **slope** of the regression line was **positive**, indicating that as training volume increases, so does caloric burn.
+- The **p-value** obtained from the test was **less than 0.001**, which is **well below the conventional significance threshold (α = 0.05)**.
+- This means there is **strong statistical evidence** against the null hypothesis.
+
+---
+
+### 📐 Decision:
+
+- **Null Hypothesis (H₀):** Training intensity has no significant effect on caloric expenditure.
+- **Alternative Hypothesis (Hₐ):** Higher intensity training significantly increases caloric expenditure.
+
+Since the p-value is below 0.05, we **reject H₀** and accept **Hₐ**.
+
+---
+
+### 📊 Interpretation:
+
+The results confirm a **statistically significant relationship** between training intensity and calorie burn. In practical terms:
+
+- Workouts with **heavier weights or more repetitions** consistently led to **higher energy expenditure**.
+- The strength of this relationship is supported by both visual analysis (scatterplots and boxplots) and the statistical test.
+
+These findings reinforce that **progressive overload not only benefits strength development but also boosts metabolic cost**, which can be leveraged in training programs targeting fat loss or body recomposition.
