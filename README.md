@@ -183,3 +183,6 @@ The results confirm a **statistically significant relationship** between trainin
 - The strength of this relationship is supported by both visual analysis (scatterplots and boxplots) and the statistical test.
 
 These findings reinforce that **progressive overload not only benefits strength development but also boosts metabolic cost**, which can be leveraged in training programs targeting fat loss or body recomposition.
+
+### 🔮 ML Objective:
+We aim to **predict the caloric expenditure** based on training features such as Total Volume, Weight, and Repetition. A regression model will be trained using these features to forecast calorie burn in unseen sessions.
