@@ -188,66 +188,76 @@ These findings reinforce that **progressive overload not only benefits strength 
 We aim to **predict the caloric expenditure** based on training features such as Total Volume, Weight, and Repetition. A regression model will be trained using these features to forecast calorie burn in unseen sessions.
 
 
-
 # 📊 Final Report: Relationship Between Heavy Workout And Calorie Expenditure
 
-## 🎯 Project Motivation
-* Analyzing the impact of heavy resistance training on caloric expenditure.
-* Tracking calorie burn during sessions with three compound movements: Bench Press, Lat Pulldown, and Smith Machine Overhead Press.
-* Utilizing Apple Watch data to evaluate intensity effects (heavy vs. light loads) on caloric burn.
-* Applying data visualization, statistical analysis, hypothesis testing, and machine learning (ML) for actionable insights.
+## 🎯 Project Overview and Motivation
+* The purpose of this project was to analyze how heavy resistance training impacts caloric expenditure.
+* By collecting detailed session data over a month and applying advanced analytical techniques, we aimed to uncover patterns and establish a concrete relationship between training intensity and calorie burn.
 
-## 📈 Research Goal
-* Understand how training intensity (weight and rep count) affects caloric expenditure in resistance exercises.
-* Develop predictive models to estimate calorie burn based on workout variables.
-* Enrich data and transform features to improve model performance and interpretability.
+## 🏋️ Data Sources and Collection Process
+* Data was personally collected over a structured 30-day training period using Apple Watch Series 7 and Apple Fitness and Health apps.
+* Exercises included:
+  * Bench Press
+  * Lat Pulldown
+  * Smith Machine Overhead Press
+* Key data collected:
+  * Weight load (kg)
+  * Repetition count
+  * Total Volume (Weight × Reps)
+  * Average heart rate
+  * Duration
+  * Caloric expenditure (kcal)
+* Exported from Apple Health in XML format, parsed with Python (`xml.etree.ElementTree`), cleaned, and converted into structured CSV files.
 
-## 🗂️ Data Sources and Preprocessing
-* Collected using Apple Watch Series 7 paired with Apple Fitness and Health apps.
-* Manually logged weight and rep counts for each set.
-* Exported daily health data from Apple Health app in `.xml` format.
-* Parsed and cleaned using Python libraries (`xml.etree.ElementTree`, `pandas`).
-* Extracted key fields: Date, Exercise name, Weight load, Repetition count, Average heart rate, Calories burned.
-* Combined into a structured `.csv` dataset.
-* Applied feature engineering to include `Total Volume (Weight x Reps)` and smoothed heart rate values.
-* Tagged off-days, handled missing values, and anonymized data for analysis.
+## 📈 Data Enrichment and Transformation
+* Created a new feature: **Total Volume** (Weight × Reps).
+* Averaged heart rate data per session.
+* Tagged off-days and handled missing values.
+* Removed outliers to improve model accuracy.
 
-## 🧪 Hypothesis Testing
-* **H₀ (Null Hypothesis)**: Training intensity (weight and rep count) has no significant effect on caloric expenditure.
-* **Hₐ (Alternative Hypothesis)**: Higher intensity training (either heavier loads or more repetitions) significantly increases caloric expenditure.
-* Conducted regression analysis on Total Volume vs. Caloric Expenditure.
-* Results showed a positive slope, and **p-value < 0.001**, rejecting H₀.
-* Interpretation: Workouts with heavier weights/more reps consistently led to higher energy expenditure.
+## 🔬 Research Question and Hypotheses
+* **Research Question:** How does training intensity (weight and reps) influence caloric expenditure?
+* **Null Hypothesis (H₀):** Training intensity has no significant effect on caloric expenditure.
+* **Alternative Hypothesis (Hₐ):** Higher intensity training leads to significantly greater caloric expenditure.
 
-## 📊 Key Findings from Visualization
-* **Boxplots** revealed a clear trend of increased median caloric burn and wider variability with heavier loads.
-* **Scatterplots** confirmed a linear correlation between total workload and calorie output.
-* **Regression Line** fitted for Total Volume showed a predictive relationship with caloric expenditure.
+## 🧪 Hypothesis Testing and Findings
+* Conducted linear regression on Total Volume vs. Caloric Expenditure.
+* Observed a **positive slope** in the regression line.
+* **p-value < 0.001**, rejecting H₀ and supporting Hₐ.
+* Boxplots and scatterplots showed higher median and variance in caloric expenditure with heavier loads and more reps.
 
-## 🖥️ Machine Learning Methods
-* Enriched data with Total Volume and scaled features.
-* Applied multiple regression models:
-  * **Linear Regression**: Baseline model with continuous relationship.
-  * **Support Vector Regression (SVR)**: Captured nonlinear patterns with RBF kernel.
-  * **Random Forest Regression**: Handled feature interactions and provided robust predictions.
-  * **Hyperparameter Tuning & Cross Validation**: Used GridSearchCV and k-fold validation to optimize model parameters and evaluate performance.
-* Compared models based on metrics (e.g., R², RMSE) and visualized predictions vs. actual values.
+## 🤖 Machine Learning Methods and Feature Engineering
+### Objectives:
+* Predict caloric expenditure based on workout features.
+* Compare model performance across methods.
+### Methods Used:
+* **Linear Regression:** Baseline model for continuous relationships.
+* **Random Forest Regression:** Handles nonlinear relationships and feature interactions.
+* **Support Vector Regression (SVR):** Robust to outliers, handles small datasets.
+* **Hyperparameter Tuning and Cross-Validation:** GridSearchCV and k-fold validation used to optimize and evaluate models.
+### Feature Transformation:
+* Total Volume as a primary predictor.
+* Added normalized Total Volume.
+* Data split into training and testing sets.
+### Results:
+* **Linear Regression:** Confirmed positive relationship, limited flexibility.
+* **Random Forest:** Superior prediction accuracy, captured nonlinearities.
+* **SVR:** Balanced performance, robust against outliers.
+* **Cross-Validation:** 5-fold validation confirmed model stability.
 
-## 🤖 Predictive Task
-* Goal: Predict caloric expenditure based on workout parameters (Weight Load, Reps, Heart Rate, Total Volume).
-* ML models trained and validated using enriched dataset.
-* Best-performing model identified for practical application in workout planning.
+## 📊 Visual Analysis
+* Boxplots of caloric expenditure by weight load.
+* Scatterplots and regression lines highlighting the positive trend.
+* Comparison charts (RMSE vs. model type) across ML methods.
 
-## 📚 Conclusion
-* Heavy resistance training significantly increases caloric expenditure.
-* Data-driven analysis confirmed intensity and volume as strong predictors of energy cost.
-* Predictive modeling enables estimation of calorie burn for new sessions.
-* Feature enrichment (e.g., Total Volume) and transformation enhanced model interpretability and performance.
-* Comprehensive visualization and clear documentation facilitated insights into training and metabolic response.
+## 🔍 Conclusion and Key Insights
+* **Training intensity (Total Volume) significantly affects caloric expenditure.**
+* **Heavier weights and more reps led to greater energy expenditure.**
+* **Random Forest performed best, capturing complex relationships.**
+* **SVR provided robust predictions despite outliers.**
+* Feature engineering and transformation greatly enhanced model performance.
+* Thorough documentation and code explanations prepared for submission.
 
-## 📝 Documentation Notes
-* This report was prepared in accordance with feedback, ensuring:
-  * Data enrichment and feature transformation are applied.
-  * Machine learning tasks and objectives are clearly highlighted.
-  * The analysis is documented in a structured **`.ipynb`** format.
-  * The final report provides both technical and interpretative insights.
+## 🏆 Final Thoughts and Future Work
+* The project demonstrated the integration of physiological data, statistics, and ML methods for actionable insights.
+* Future work: Extend data collection, incorporate additional wearable data, and explore deep learning models for enhanced predictions.
