@@ -186,3 +186,68 @@ These findings reinforce that **progressive overload not only benefits strength 
 
 ### 🔮 ML Objective:
 We aim to **predict the caloric expenditure** based on training features such as Total Volume, Weight, and Repetition. A regression model will be trained using these features to forecast calorie burn in unseen sessions.
+
+
+
+# 📊 Final Report: Relationship Between Heavy Workout And Calorie Expenditure
+
+## 🎯 Project Motivation
+* Analyzing the impact of heavy resistance training on caloric expenditure.
+* Tracking calorie burn during sessions with three compound movements: Bench Press, Lat Pulldown, and Smith Machine Overhead Press.
+* Utilizing Apple Watch data to evaluate intensity effects (heavy vs. light loads) on caloric burn.
+* Applying data visualization, statistical analysis, hypothesis testing, and machine learning (ML) for actionable insights.
+
+## 📈 Research Goal
+* Understand how training intensity (weight and rep count) affects caloric expenditure in resistance exercises.
+* Develop predictive models to estimate calorie burn based on workout variables.
+* Enrich data and transform features to improve model performance and interpretability.
+
+## 🗂️ Data Sources and Preprocessing
+* Collected using Apple Watch Series 7 paired with Apple Fitness and Health apps.
+* Manually logged weight and rep counts for each set.
+* Exported daily health data from Apple Health app in `.xml` format.
+* Parsed and cleaned using Python libraries (`xml.etree.ElementTree`, `pandas`).
+* Extracted key fields: Date, Exercise name, Weight load, Repetition count, Average heart rate, Calories burned.
+* Combined into a structured `.csv` dataset.
+* Applied feature engineering to include `Total Volume (Weight x Reps)` and smoothed heart rate values.
+* Tagged off-days, handled missing values, and anonymized data for analysis.
+
+## 🧪 Hypothesis Testing
+* **H₀ (Null Hypothesis)**: Training intensity (weight and rep count) has no significant effect on caloric expenditure.
+* **Hₐ (Alternative Hypothesis)**: Higher intensity training (either heavier loads or more repetitions) significantly increases caloric expenditure.
+* Conducted regression analysis on Total Volume vs. Caloric Expenditure.
+* Results showed a positive slope, and **p-value < 0.001**, rejecting H₀.
+* Interpretation: Workouts with heavier weights/more reps consistently led to higher energy expenditure.
+
+## 📊 Key Findings from Visualization
+* **Boxplots** revealed a clear trend of increased median caloric burn and wider variability with heavier loads.
+* **Scatterplots** confirmed a linear correlation between total workload and calorie output.
+* **Regression Line** fitted for Total Volume showed a predictive relationship with caloric expenditure.
+
+## 🖥️ Machine Learning Methods
+* Enriched data with Total Volume and scaled features.
+* Applied multiple regression models:
+  * **Linear Regression**: Baseline model with continuous relationship.
+  * **Support Vector Regression (SVR)**: Captured nonlinear patterns with RBF kernel.
+  * **Random Forest Regression**: Handled feature interactions and provided robust predictions.
+  * **Hyperparameter Tuning & Cross Validation**: Used GridSearchCV and k-fold validation to optimize model parameters and evaluate performance.
+* Compared models based on metrics (e.g., R², RMSE) and visualized predictions vs. actual values.
+
+## 🤖 Predictive Task
+* Goal: Predict caloric expenditure based on workout parameters (Weight Load, Reps, Heart Rate, Total Volume).
+* ML models trained and validated using enriched dataset.
+* Best-performing model identified for practical application in workout planning.
+
+## 📚 Conclusion
+* Heavy resistance training significantly increases caloric expenditure.
+* Data-driven analysis confirmed intensity and volume as strong predictors of energy cost.
+* Predictive modeling enables estimation of calorie burn for new sessions.
+* Feature enrichment (e.g., Total Volume) and transformation enhanced model interpretability and performance.
+* Comprehensive visualization and clear documentation facilitated insights into training and metabolic response.
+
+## 📝 Documentation Notes
+* This report was prepared in accordance with feedback, ensuring:
+  * Data enrichment and feature transformation are applied.
+  * Machine learning tasks and objectives are clearly highlighted.
+  * The analysis is documented in a structured **`.ipynb`** format.
+  * The final report provides both technical and interpretative insights.
